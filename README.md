@@ -1,4 +1,4 @@
-# 📊 Smart Spend: Secure Full-Stack Financial Ingestion & Analytics Engine
+# 📊 Expense-Tracer: Secure Full-Stack Financial Ingestion & Analytics Engine
 
 > A high-performance, authenticated full-stack web platform designed to isolate individual user profiles, log rolling monthly bill expenditures, and compile chronological financial analytics via interactive Year-over-Year data visualization.
 
@@ -129,6 +129,45 @@ The storage engine tracks objects and enforces isolation using two primary table
 - `amount` (Float / Numeric Scalar Balance formatted in INR ₹)
 - `description` (VARCHAR, Sanitized Input Text String)
 - `date` (Date, Chronological timestamp)
+
+---
+## Screenshot Of The Website
+
+<p align="center">Sign Up Page</p>
+<p align="center">
+ <img src="./static/signup.png">
+</p>
+
+<p align="center">Login Page</p>
+<p align="center">
+ <img src="./static/login.png">
+</p>
+
+<p align="center">Add Transaction Page</p>
+<p align="center">
+ <img src="./static/add.png">
+</p>
+
+<p align="center">Transaction History Page</p>
+<p align="center">
+ <img src="./static/history.png">
+</p>
+
+<p align="center">Category Wise Pie Chart For Current Year</p>
+<p align="center">
+ <img src="./static/pie.png">
+</p>
+
+<p align="center">Comparison Between Current Year And Previous Year Transactions</p>
+<p align="center">
+ <img src="./static/comparison.png">
+</p>
+
+<p align="center">Daily Line Chart for Current Month</p>
+<p align="center">
+ <img src="./static/line.png">
+</p>
+
 
 ---
 
