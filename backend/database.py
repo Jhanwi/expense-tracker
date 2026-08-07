@@ -2,7 +2,7 @@ import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 
-DATABASE_URL = "sqlite:///./smart_spend.db"
+DATABASE_URL = "sqlite:///./expense-tracker.db"
 
 engine = create_engine(
     DATABASE_URL, 
