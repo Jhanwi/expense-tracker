@@ -1,4 +1,4 @@
-# 📊 Expense-Tracer: Secure Full-Stack Financial Ingestion & Analytics Engine
+# 📊 Expense-Tracker: Secure Full-Stack Financial Ingestion & Analytics Engine
 
 > A high-performance, authenticated full-stack web platform designed to isolate individual user profiles, log rolling monthly bill expenditures, and compile chronological financial analytics via interactive Year-over-Year data visualization.
 
