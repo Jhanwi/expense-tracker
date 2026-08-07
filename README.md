@@ -78,7 +78,7 @@ Ensure you have the latest stable distribution of **Python 3.12+** installed on 
 ### 🐍 1. Initialize the Backend Core Server
 1. Open your terminal or Command Prompt, and navigate to the backend folder path:
    ```bash
-   cd d:/smart-spend/backend
+   cd d:/expense-tracker/backend
    ```
 2. Create an isolated python virtual environment and activate it:
    ```bash
@@ -102,7 +102,7 @@ Ensure you have the latest stable distribution of **Python 3.12+** installed on 
 1. Open a **second, completely separate** terminal or Command Prompt window.
 2. Step inside your frontend folder asset directory:
    ```bash
-   cd d:/smart-spend/frontend
+   cd d:/expense-tracker/frontend
    ```
 3. Boot up the local HTTP network distribution node:
    ```bash
