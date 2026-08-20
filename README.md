@@ -135,23 +135,19 @@ The storage engine tracks objects and enforces isolation using two primary table
 
 <p align="center">Sign Up Page</p>
 <p align="center">
- <img src="">
+ <img src="./Screenshot/signup (2).png">
 </p>
 
 <p align="center">Login Page</p>
 <p align="center">
- <img src="">
+ <img src="./Screenshot/login (2).png">
 </p>
 
 <p align="center">Add Transaction Page</p>
 <p align="center">
- <img src="">
+ <img src="./Screenshot/transaction.png">
 </p>
 
-<p align="center">Transaction History Page</p>
-<p align="center">
- <img src="">
-</p>
 
 <p align="center">Category Wise Pie Chart For Current Year</p>
 <p align="center">
