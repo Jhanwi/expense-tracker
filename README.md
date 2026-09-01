@@ -1,171 +1,287 @@
-# 📊 Expense-Tracker
+# 💰 Expense Tracker
 
-> Expense Tracker is a full-stack web application I built to keep track of daily income and expenses.
-> I wanted to build something where I could practice working with a React frontend, FastAPI backend, SQLAlchemy, database operations, authentication, and REST APIs in one project.
-
----
-
-## 📌 Table of Contents
-- [✨  Features](#-features)
-- [🛠️ Technologies Used](#-Technologies-Used)
-- [🏗️ System Architecture](#%EF%B8%8F-system-architecture)
-- [🚀 Local Deployment Guide](#-local-deployment-guide)
-- 
-- [📬 Contact](#-contact)
+> Expense Tracker is a full-stack web application I built to keep track of daily income and expenses. I wanted to build something where I could practice working with a React frontend, FastAPI backend, SQLAlchemy, database operations, authentication, and REST APIs in one project
 
 ---
 
-## ✨ Features
+## 🌟 Features
 
-- User signup and login
-- JWT-based authentication
-- Add, edit, and delete transactions
-- Track income and expenses
-- View total balance
-- Organize transactions by category
-- Filter transactions by category
-- Import transactions from CSV files
-- View recent transaction history
-- Responsive frontend
-- REST API with FastAPI
-- SQLite database using SQLAlchemy
+* 🔐 User signup and login
+* 🔑 JWT-based authentication
+* ➕ Add income and expense transactions
+* ✏️ Edit transactions
+* 🗑️ Delete transactions
+* 📊 View income, expenses, and balance
+* 🏷️ Organize transactions by category
+* 🔎 Filter transactions
+* 📄 Import transactions from CSV files
+* 📜 View transaction history
+* 📱 Responsive user interface
 
 ---
 
-## 🛠️ Technologies Used
-
-### Backend 
-- Python
-- FastAPI
-- SQLAlchemy
-- Pydantic
-- JWT
-- Passlib
-
-### Frontend
-- React.js
-- JavaScript
-- HTML
-- CSS
-- Vite
-
-### Database
-- SQLite
-
-### Tools
-- Git
-- GitHub
-- Docker
-- VS Code
-  
----
-
-## 🏗️ System Architecture
+## 🖥️ How It Works
 
 ```text
- expense-tracker/
+┌──────────────────┐
+│  React Frontend  │
+│                  │
+│  UI + Forms +    │
+│  CSV Import      │
+└────────┬─────────┘
+         │
+      REST API
+         │
+         ▼
+┌──────────────────┐
+│  FastAPI Backend │
+│                  │
+│ Auth + CRUD +    │
+│ Validation       │
+└────────┬─────────┘
+         │
+     SQLAlchemy
+         │
+         ▼
+┌──────────────────┐
+│ SQLite Database  │
+└──────────────────┘
+```
+
+The React frontend communicates with the FastAPI backend through REST APIs. The backend handles authentication, validation, and transaction operations, while SQLAlchemy is used for database operations.
+
+---
+
+## ⚡ Features Overview
+
+| Feature           | Description                                  |
+| ----------------- | -------------------------------------------- |
+| 🔐 Authentication | User signup, login, and JWT authentication   |
+| 💸 Transactions   | Add, edit, and delete transactions           |
+| 📊 Dashboard      | View income, expenses, and balance           |
+| 🏷️ Categories    | Organize and filter transactions             |
+| 📄 CSV Import     | Import multiple transactions from a CSV file |
+| 🗄️ Database      | Store application data using SQLite          |
+| 🔌 REST API       | Backend APIs built with FastAPI              |
+
+---
+
+## 🔐 Authentication
+
+The application uses JWT-based authentication.
+
+```text
+Create Account
+      ↓
+    Login
+      ↓
+Credentials Verified
+      ↓
+  JWT Token
+      ↓
+Protected API Requests
+```
+
+Passwords are hashed before being stored in the database.
+
+---
+
+## 📄 CSV Import
+
+The application allows users to import multiple transactions using a CSV file.
+
+Example:
+
+```csv
+date,description,category,amount
+2026-01-10,Groceries,Food,850
+2026-01-12,Bus Ticket,Travel,50
+2026-01-15,Electricity Bill,Bills,1200
+```
+
+This makes it easier to add multiple expenses without entering them one by one.
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+
+* React.js
+* JavaScript
+* HTML5
+* CSS3
+* Vite
+
+### Backend
+
+* Python
+* FastAPI
+* SQLAlchemy
+* Pydantic
+* JWT
+* Passlib
+
+### Database
+
+* SQLite
+
+### Tools
+
+* Git
+* GitHub
+* Docker
+* VS Code
+
+---
+
+## 📁 Project Structure
+
+```text
+expense-tracker/
 │
 ├── backend/
-│    ├── main.py
-│    ├── database.py
-│    |── models.py
-│    ├── seed.py
-│    ├── requirements.txt
-│    └── Dockerfile
+│   ├── main.py
+│   ├── database.py
+│   ├── models.py
+│   ├── seed.py
+│   ├── requirements.txt
+│   └── Dockerfile
 │
 ├── frontend/
-│     ├── src/
-│     │    ├── App.jsx
-│     │    ├── main.jsx
-│     │    └── ...
-│     └── package.json
+│   ├── src/
+│   │   ├── App.jsx
+│   │   ├── main.jsx
+│   │   └── ...
+│   └── package.json
 │
 └── README.md
 ```
 
 ---
 
-## 🚀 Local Deployment Guide
+## 🚀 Getting Started
 
-Follow these steps to spin up the full-stack system natively on your local machine:
+### 1. Clone the repository
 
-### 📋 Prerequisites
-Ensure you have the latest stable distribution of **Python 3.12+** installed on your system.
+```bash
+git clone https://github.com/Jhanwi/expense-tracker.git
+cd expense-tracker
+```
 
-### 🐍 1. Initialize the Backend Core Server
-1. Open your terminal or Command Prompt, and navigate to the backend folder path:
-   ```bash
-   cd d:/expense-tracker/backend
-   ```
-2. Create an isolated python virtual environment and activate it:
-   ```bash
-   python -m venv venv
-   # On Windows:
-   venv\Scripts\activate
-   # On Linux/Ubuntu/macOS:
-   source venv/bin/activate
-   ```
-3. Install the application constraints and requirements:
-   ```bash
-   pip install fastapi uvicorn pydantic[email] sqlalchemy passlib[bcrypt] pyjwt python-multipart
-   ```
-4. Turn on the background development server engine:
-   ```bash
-   python -m uvicorn main:app --reload
-   ```
-   *(Verify the terminal displays: `INFO: Uvicorn running on http://127.0.0.1:8000`)*.
+### 2. Set up the backend
 
-### 🖥️ 2. Host the Responsive UI Client
-1. Open a **second, completely separate** terminal or Command Prompt window.
-2. Step inside your frontend folder asset directory:
-   ```bash
-   cd d:/expense-tracker/frontend
-   ```
-3. Boot up the local HTTP network distribution node:
-   ```bash
-   python -m http.server 3000
-   ```
-4. Launch your browser window and navigate to your production interface: **`http://localhost:3000`**
+```bash
+cd backend
+python -m venv venv
+```
 
----
+Activate the virtual environment.
 
+**Windows:**
 
-## Screenshot Of The Website
+```bash
+venv\Scripts\activate
+```
 
-<p align="center">Sign Up Page</p>
-<p align="center">
- <img src="./Screenshot/signup (2).png">
-</p>
+**Linux/macOS:**
 
-<p align="center">Login Page</p>
-<p align="center">
- <img src="./Screenshot/login (2).png">
-</p>
+```bash
+source venv/bin/activate
+```
 
-<p align="center">Add Transaction Page</p>
-<p align="center">
- <img src="./Screenshot/transaction.png">
-</p>
+Install the dependencies:
 
+```bash
+pip install -r requirements.txt
+```
 
-<p align="center">Category Wise Pie Chart For Current Year</p>
-<p align="center">
- <img src="./Screenshot/pie.png">
-</p>
+Start the FastAPI server:
 
-<p align="center">Comparison Between Current Year And Previous Year Transactions</p>
-<p align="center">
- <img src="./Screenshot/comparison.png">
-</p>
+```bash
+uvicorn main:app --reload
+```
 
-<p align="center">Daily Line Chart for Current Month</p>
-<p align="center">
- <img src="./Screenshot/line.png">
-</p>
+The backend will run at:
 
+```text
+http://127.0.0.1:8000
+```
+
+FastAPI documentation:
+
+```text
+http://127.0.0.1:8000/docs
+```
+
+### 3. Set up the frontend
+
+Open another terminal:
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Open the local URL provided by Vite in your browser.
 
 ---
 
-## 📬 Contact
-- **Project Repository**: [https://github.com/jhanwi](https://github.com)
-- **LinkedIn Profile**: [https://linkedin.com/jhanwi-kumari](https://linkedin.com)
+## ⚙️ Environment Variables
+
+Create a `.env` file inside the `backend` directory.
+
+```env
+DATABASE_URL=sqlite:///./expense_tracker.db
+SECRET_KEY=your_secret_key
+```
+
+Keep your actual secret values out of the repository.
+
+---
+
+## 🧠 What I Learned
+
+Building this project helped me get practical experience with:
+
+* Creating REST APIs using FastAPI
+* Connecting a React frontend with a Python backend
+* Working with SQLAlchemy ORM
+* Designing and working with database models
+* Implementing JWT authentication
+* Password hashing
+* Handling forms and API requests
+* Processing CSV files
+* Using environment variables
+* Debugging frontend and backend issues
+* Using Git and GitHub
+* Running applications with Docker
+
+---
+
+## 🔨 Future Improvements
+
+* [ ] Add PostgreSQL support
+* [ ] Add monthly and yearly spending reports
+* [ ] Add charts for expense analysis
+* [ ] Improve transaction search and filtering
+* [ ] Add pagination
+* [ ] Improve validation and error messages
+* [ ] Deploy the application
+
+---
+
+## 📌 Project Status
+
+🟢 **Active portfolio project**
+
+This project was built to gain practical experience with full-stack development, backend development, REST APIs, authentication, and database integration.
+
+---
+
+## 👩‍💻 Author
+
+**Jhanwi Kumari**
+
+[GitHub](https://github.com/Jhanwi)
