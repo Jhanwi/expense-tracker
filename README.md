@@ -1,69 +1,86 @@
-# 📊 Expense-Tracker: Secure Full-Stack Financial Ingestion & Analytics Engine
+# 📊 Expense-Tracker
 
-> A high-performance, authenticated full-stack web platform designed to isolate individual user profiles, log rolling monthly bill expenditures, and compile chronological financial analytics via interactive Year-over-Year data visualization.
+> Expense Tracker is a full-stack web application I built to keep track of daily income and expenses.
+> I wanted to build something where I could practice working with a React frontend, FastAPI backend, SQLAlchemy, database operations, authentication, and REST APIs in one project.
 
 ---
 
 ## 📌 Table of Contents
-- [✨ Key Engineering Features](#-key-engineering-features)
-- [🛠️ Tech Stack](#-tech-stack)
+- [✨  Features](#-features)
+- [🛠️ Technologies Used](#-Technologies-Used)
 - [🏗️ System Architecture](#%EF%B8%8F-system-architecture)
 - [🚀 Local Deployment Guide](#-local-deployment-guide)
-- [🗄️ Database Schema Modeling](#%EF%B8%8F-database-schema-modeling)
+- 
 - [📬 Contact](#-contact)
 
 ---
 
-## ✨ Key Engineering Features
+## ✨ Features
 
-- **🔐 Multi-User Session Isolation**: Implements secure credential verification using **cryptographic password hashing (bcrypt)** and stateless **JSON Web Tokens (JWT)** to enforce strict data isolation at the database tier.
-- **📊 Year-over-Year (YoY) Visual Analytics**: Integrates a dynamic side-by-side clustered vertical bar chart using **Chart.js** to map and compare running monthly balances for the current year directly against historical baselines.
-- **⏱️ Inactivity Session Garbage Collection**: Features an advanced client-side event observer framework tracking global inputs (`mousemove`, `keydown`, `click`). Automatically purges local memory caches and forces redirection to the login gateway after **15 minutes of inactivity**.
-- **🛠️ Full-Lifecycle CRUD Operations**: Complete programmatic implementation for adding, reading, inline updating, and cascading deletion of transaction records safely without DOM string-splitting conflicts.
-- **💾 Relational Persistence Layer**: Leverages the **SQLAlchemy ORM** to manage connection states, map data entities, and dynamically build schema definitions out-of-the-box inside a local filesystem database.
+- User signup and login
+- JWT-based authentication
+- Add, edit, and delete transactions
+- Track income and expenses
+- View total balance
+- Organize transactions by category
+- Filter transactions by category
+- Import transactions from CSV files
+- View recent transaction history
+- Responsive frontend
+- REST API with FastAPI
+- SQLite database using SQLAlchemy
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠️ Technologies Used
 
-### Backend API Tier
-- **Language/Framework**: Python 3.12+ / FastAPI (Asynchronous REST framework)
-- **Security Utilities**: PyJWT, Passlib (Bcrypt backend), Pydantic (Data validation layers)
-- **Database Engine & ORM**: SQLite / SQLAlchemy ORM (Object Relational Mapper)
+### Backend 
+- Python
+- FastAPI
+- SQLAlchemy
+- Pydantic
+- JWT
+- Passlib
 
-### Frontend Client Layer
-- **Interface Structure**: Semantic HTML5, Modern CSS Layouts (CSS Grid / Flexbox Layout)
-- **Data Rendering Canvas**: Vanilla ES6 JavaScript (Programmatic event delegation), Chart.js CDN
+### Frontend
+- React.js
+- JavaScript
+- HTML
+- CSS
+- Vite
 
+### Database
+- SQLite
+
+### Tools
+- Git
+- GitHub
+- Docker
+- VS Code
+  
 ---
 
 ## 🏗️ System Architecture
 
 ```text
-  +------------------------------------------------------------------------+
-
-  |                        Browser Client Interface                        |
-  |   [HTML5 Layout]  <-->  [CSS Slate-Charcoal Theme]  <-->  [Chart.js]   |
-  +------------------------------------------------------------------------+
-                                       │
-                    Secure Client-Side API Fetch Requests
-                        (Authorization: Bearer <JWT>)
-                                       │
-                                       ▼
-  +------------------------------------------------------------------------+
-
-  |                          FastAPI API Routing Engine                    |
-  |   [/api/auth/*] Access Control  │  [/api/transactions/*] Protected Data  |
-  +------------------------------------------------------------------------+
-                                       │
-                         Programmatic Data Operations
-                                       │
-                                       ▼
-  +------------------------------------------------------------------------+
-
-  |                        Relational Persistence Tier                     |
-  |             [SQLAlchemy ORM Layer]  <-->  [SQLite Engine Pool]         |
-  +------------------------------------------------------------------------+
+ expense-tracker/
+│
+├── backend/
+│    ├── main.py
+│    ├── database.py
+│    |── models.py
+│    ├── seed.py
+│    ├── requirements.txt
+│    └── Dockerfile
+│
+├── frontend/
+│     ├── src/
+│     │    ├── App.jsx
+│     │    ├── main.jsx
+│     │    └── ...
+│     └── package.json
+│
+└── README.md
 ```
 
 ---
@@ -112,25 +129,7 @@ Ensure you have the latest stable distribution of **Python 3.12+** installed on 
 
 ---
 
-## 🗄️ Database Schema Modeling
 
-The storage engine tracks objects and enforces isolation using two primary table layouts:
-
-### 👤 User Entities Model (`users`)
-- `id` (Integer, Primary Key, Auto-Increment)
-- `username` (VARCHAR, Unique, Indexed)
-- `email` (VARCHAR, Unique)
-- `hashed_password` (VARCHAR, Secure Bcrypt String Capsule)
-
-### 💸 Transaction Ledger Model (`transactions`)
-- `id` (Integer, Primary Key, Auto-Increment)
-- `user_id` (Integer, Indexed, Foreign Key mapped to User profile context)
-- `category_id` (Integer, Maps to: Miscellaneous, Clothing, Transportation, HouseHold)
-- `amount` (Float / Numeric Scalar Balance formatted in INR ₹)
-- `description` (VARCHAR, Sanitized Input Text String)
-- `date` (Date, Chronological timestamp)
-
----
 ## Screenshot Of The Website
 
 <p align="center">Sign Up Page</p>
